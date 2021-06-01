@@ -1,9 +1,7 @@
 // Copyright 2021 NNTU-CS
 template<typename T>
-class TPQueue
-  {
-  struct ITEM
-    {
+class TPQueue {
+  struct ITEM {
     T data;
     ITEM* next;
     ITEM* pred;
@@ -20,8 +18,7 @@ class TPQueue
   ITEM* tail;
   };
 template<typename T>
-typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
-  {
+typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data) {
   ITEM* item = new ITEM;
   item->data = data;
   item->next = nullptr;
@@ -29,45 +26,34 @@ typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
   return item;
   }
 template<typename T>
-TPQueue<T>::~TPQueue()
-  {
+TPQueue<T>::~TPQueue() {
   while (head)
     pop();
   }
 template<typename T>
-void TPQueue<T>::push(const T& dat)
-  {
-  if (head == nullptr)
-    {
+void TPQueue<T>::push(const T& dat) {
+  if (head == nullptr) {
     head = create(dat);
     tail = head;
     }
-  else if (tail->data.prior >= dat.prior)
-    {
+  else if (tail->data.prior >= dat.prior) {
     if (tail->data.ch == dat.ch)
       tail->data = dat;
-    else
-      {
+    else {
       tail->next = create(dat);
       tail->next->pred = tail;
       tail = tail->next;
       }
-    }
-  else if (head == tail)
-    {
+    } else if (head == tail) {
     tail->pred = create(dat);
     head = tail->pred;
     head->next = tail;
-    }
-  else
-    {
+    } else {
     ITEM* tmp = tail;
-    while (tmp != head && tmp->data.prior < dat.prior)
-      {
+    while (tmp != head && tmp->data.prior < dat.prior) {
       tmp = tmp->pred;
       }
-    if (tmp->data.prior == dat.prior)
-      {
+    if (tmp->data.prior == dat.prior) {
       ITEM* cell = new ITEM;
       cell->next = tmp->next;
       cell->pred = tmp;
@@ -75,8 +61,7 @@ void TPQueue<T>::push(const T& dat)
       tmp->next->pred = cell;
       tmp->next = cell;
       }
-    if (tmp == head && tmp->data.prior < dat.prior)
-      {
+    if (tmp == head && tmp->data.prior < dat.prior) {
       head->pred = create(dat);
       head = head->pred;
       head->next = tmp;
@@ -84,10 +69,8 @@ void TPQueue<T>::push(const T& dat)
     }
   }
 template<typename T>
-T TPQueue<T>::pop()
-  {
-  if (head)
-    {
+T TPQueue<T>::pop() {
+  if (head) {
     ITEM* temp = head->next;
     T data = head->data;
     delete head;
@@ -96,18 +79,15 @@ T TPQueue<T>::pop()
     }
   }
 template<typename T>
-void TPQueue<T>::print() const
-  {
+void TPQueue<T>::print() const {
   ITEM* temp = head;
-  while (temp)
-    {
+  while (temp) {
     std::cout << temp->data << " ";
     temp = temp->next;
     }
   std::cout << std::endl;
   }
-struct SYM
-{
+struct SYM {
 	char ch;
 	int prior;
 }
