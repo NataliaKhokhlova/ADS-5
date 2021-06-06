@@ -2,7 +2,7 @@
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 #include <cassert>
-
+filter=-whitespace,-legal/copyright
 template<typename T>
 class TPQueue {
   struct ITEM {
