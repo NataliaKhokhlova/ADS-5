@@ -9,7 +9,6 @@ class TPQueue {
     T data;
     ITEM * next;
   };
-  
   private:
   ITEM * head;
   ITEM * tail;
