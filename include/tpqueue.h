@@ -2,16 +2,16 @@
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 #include <cassert>
-filter=-whitespace,-legal/copyright
+filter = -whitespace, -legal/copyright
 template<typename T>
 class TPQueue {
   struct ITEM {
     T data;
     ITEM * next;
   };
-  
-  
-  private:
+
+
+    private:
   ITEM * head;
   ITEM * tail;
   ITEM *create(T data) {
@@ -21,8 +21,8 @@ class TPQueue {
   return t;
   }
 
-  
-  public:
+
+    public:
   TPQueue() :head(nullptr), tail(nullptr) {}
   ~TPQueue() {
   while (head)
