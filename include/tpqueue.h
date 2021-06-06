@@ -9,6 +9,8 @@ class TPQueue {
     T data;
     ITEM * next;
   };
+  
+  
   private:
   ITEM * head;
   ITEM * tail;
@@ -19,6 +21,7 @@ class TPQueue {
   return t;
   }
 
+  
   public:
   TPQueue() :head(nullptr), tail(nullptr) {}
   ~TPQueue() {
@@ -63,10 +66,8 @@ class TPQueue {
   }
 }
 };
-
 struct SYM {
   char ch;
   int  prior;
 };
-
 #endif // INCLUDE_TPQUEUE_H_
